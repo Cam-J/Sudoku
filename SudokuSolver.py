@@ -26,6 +26,7 @@ class SudokuSolver:
         # Initialize the SudokuSolver class with the grid read from the file
         self.grid = self.readFromFile(filename)
         self.N = len(self.grid)
+        self.attempts = 0
 
     def readFromFile(self, filename):
         # Read the Sudoku grid from the file and return it as a 2D list
@@ -45,6 +46,7 @@ class SudokuSolver:
         # Solve the Sudoku puzzle
         if self.solveSudoku():
             # If a solution is found, print the solved Sudoku grid
+            print("Solution:")
             self.printSudoku()
         else:
             # If no solution exists, print a message
@@ -92,10 +94,17 @@ class SudokuSolver:
                 # If 'num' is valid, place it in the empty location
                 self.grid[row][col] = num
                 # Recursively try to solve the Sudoku grid
+                # TESTS
+                self.attempts += 1 # Increment attempts
+                print(f"\nAttempt #{self.attempts}: Trying {num} at ({row}, {col})") # Print attempt
+                print("______________________________\n")
+                self.printSudoku() # print grid after attempt
+                print("______________________________\n")
                 if self.solveSudoku():
                     return True
                 # If no solution is found, backtrack and reset the cell to 0
                 self.grid[row][col] = 0
+                print(f"Attempt #{self.attempts}: Backtrack from ({row}, {col})")
         # If no solution is found, return False
         return False
 
