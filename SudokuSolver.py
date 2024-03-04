@@ -8,8 +8,18 @@ def readFromFile(filename):
         grid = [[int(num) for num in line.split()] for line in file]
     return grid
 
+    # Print the Sudoku grid as a 9x9 grid
+    for i in range(9):
+        if i != 0 and i % 3 == 0:
+            print("-" * 21)  # Print horizontal line after every 3 rows
+        for j in range(9):
+            if j != 0 and j % 3 == 0:
+                print("|", end=" ")  # Print vertical line after every 3 columns
+            print(grid[i][j], end=" ")
+        print()  # Move to the next line after printing each row
+
 # Test the readFromFile function by printing the output
-print(readFromFile("sudoku_grid.txt"))
+# print(readFromFile("sudoku_grid.txt"))
 
 class SudokuSolver:
     def __init__(self, filename):
