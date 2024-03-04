@@ -4,8 +4,8 @@ This Python script generates Sudoku puzzles of variable sizes and difficulty lev
 
 ## Features
 
-- Generates Sudoku puzzles of any size (e.g., 9x9, 16x16, etc.).
-- Allows customization of difficulty levels by specifying the number of digits to remove.
+- Generates a 9x9 Sudoku Puzzle
+<- Allows customization of difficulty levels by specifying the number of digits to remove.>
 - Saves generated Sudoku grids to a text file for later use or solving.
 
 ## How to Use
@@ -24,7 +24,6 @@ This Python script generates Sudoku puzzles of variable sizes and difficulty lev
         ```bash
         python sudoku_generator.py
         ```
-    - Adjust parameters (`N` for grid size and `K` for the number of digits to remove) in the script according to your preferences.
 
 4. **Output**:
     - The script generates a Sudoku grid and prints it to the console.
