@@ -94,9 +94,9 @@ class SudokuGenerate:
         # No valid value was found, so backtrack
         return False
  
-    # Choose random value and remove the value
+    # remove the  K value
     def removeKDigits(self):
-        # Remove K random digits from the filled Sudoku grid
+        # Remove K digits from the filled Sudoku grid
         count = self.K
  
         while (count != 0):
@@ -110,24 +110,22 @@ class SudokuGenerate:
     
     # Print the grid
     def printSudoku(self):
-        # Print the Sudoku grid
         for i in range(self.N):
             for j in range(self.N):
                 print(self.mat[i][j], end=" ")
             print()
 
-    # Save grid to be used by solver
+    # Save grid
     def saveToFile(self, filename):
         # Save the generated Sudoku grid to a file
         with open(filename, 'w') as file:
             for row in self.mat:
                 file.write(' '.join(map(str, row)) + '\n')
- 
-# Driver code
+
 if __name__ == "__main__":
     N = 9  # Size of the Sudoku grid
     K = 40  # Number of digits to remove
-    sudoku = SudokuGenerate(N, K)  # Create an instance of SudokuGenerate class
+    sudoku = SudokuGenerate(N, K)  # SudokuGenerate class instance
     sudoku.fillValues()  # Fill the Sudoku grid with values
     sudoku.printSudoku()  # Print the generated Sudoku grid
     sudoku.saveToFile("sudoku_grid.txt")  # Save the generated Sudoku grid to a file
