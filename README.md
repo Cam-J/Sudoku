@@ -1,6 +1,6 @@
 # Sudoku Generator
 
-This Python script generates Sudoku puzzles of variable sizes and difficulty levels. It utilizes backtracking and random number generation to create unique Sudoku grids.
+This Python script generates Sudoku puzzles of variable sizes and difficulty levels. It utilizes the concept of recursion and random number generation to create unique Sudoku grids.
 
 ## Features
 
