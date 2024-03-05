@@ -41,7 +41,7 @@ class SudokuSolver:
                 grid.append(row)
         return grid
 
-    # Fail safe incase shit hits the fan, want to remove this to a point where it will not fail!
+    # Fail safe incase shit hits the fan --- !!! REFINE ? !!!!
     def solve(self):
         # Solve the Sudoku puzzle
         if self.solveSudoku():
