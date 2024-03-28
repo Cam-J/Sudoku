@@ -30,7 +30,7 @@ This Python script generates Sudoku puzzles of variable sizes and difficulty lev
     - It also saves the generated grid to a text file named `sudoku_grid.txt` in the same directory.
 
 ## Example
-<!--
+
 ```python
 # Generate a 9x9 Sudoku grid with 40 digits removed
 N = 9
@@ -39,4 +39,4 @@ sudoku = SudokuGenerate(N, K)
 sudoku.fillValues()
 sudoku.printSudoku()
 sudoku.saveToFile("sudoku_grid.txt")
--->
+```
