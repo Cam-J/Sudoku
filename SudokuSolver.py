@@ -8,14 +8,25 @@ def readFromFile(filename):
         grid = [[int(num) for num in line.split()] for line in file]
     return grid
 
+    # Print the Sudoku grid as a 9x9 grid
+    for i in range(9):
+        if i != 0 and i % 3 == 0:
+            print("-" * 21)  # Print horizontal line after every 3 rows
+        for j in range(9):
+            if j != 0 and j % 3 == 0:
+                print("|", end=" ")  # Print vertical line after every 3 columns
+            print(grid[i][j], end=" ")
+        print()  # Move to the next line after printing each row
+
 # Test the readFromFile function by printing the output
-print(readFromFile("sudoku_grid.txt"))
+# print(readFromFile("sudoku_grid.txt"))
 
 class SudokuSolver:
     def __init__(self, filename):
         # Initialize the SudokuSolver class with the grid read from the file
         self.grid = self.readFromFile(filename)
         self.N = len(self.grid)
+        self.attempts = 0
 
     def readFromFile(self, filename):
         # Read the Sudoku grid from the file and return it as a 2D list
@@ -30,11 +41,12 @@ class SudokuSolver:
                 grid.append(row)
         return grid
 
-    # Fail safe incase shit hits the fan, want to remove this to a point where it will not fail!
+    # Fail safe incase shit hits the fan --- !!! REFINE ? !!!!
     def solve(self):
         # Solve the Sudoku puzzle
         if self.solveSudoku():
             # If a solution is found, print the solved Sudoku grid
+            print("Solution:")
             self.printSudoku()
         else:
             # If no solution exists, print a message
@@ -82,10 +94,17 @@ class SudokuSolver:
                 # If 'num' is valid, place it in the empty location
                 self.grid[row][col] = num
                 # Recursively try to solve the Sudoku grid
+                # TESTS
+                self.attempts += 1 # Increment attempts
+                print(f"\nAttempt #{self.attempts}: Trying {num} at ({row}, {col})") # Print attempt
+                print("______________________________\n")
+                self.printSudoku() # print grid after attempt
+                print("______________________________\n")
                 if self.solveSudoku():
                     return True
                 # If no solution is found, backtrack and reset the cell to 0
                 self.grid[row][col] = 0
+                print(f"Attempt #{self.attempts}: Backtrack from ({row}, {col})")
         # If no solution is found, return False
         return False
 
