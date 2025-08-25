@@ -1,42 +1,77 @@
-# Sudoku Generator
+# 🔢 Sudoku Generator & Solver (Python)
 
-This Python script generates Sudoku puzzles of variable sizes and difficulty levels. It utilizes the concept of recursion and random number generation to create unique Sudoku grids.
+A simple, pure-Python project to **generate** Sudoku puzzles and **solve** them via backtracking.  
+Supports configurable grid size (default 9×9) and difficulty by removing a chosen number of digits.
 
-## Features
+---
 
-- Generates a 9x9 Sudoku Puzzle
-<!-- - Allows customization of difficulty levels by specifying the number of digits to remove. -->
-- Saves generated Sudoku grids to a text file for later use or solving.
+## ✨ Features
+- ✅ Generate valid Sudoku boards
+- 🎚️ Control difficulty by removing `K` cells
+- 💾 Save puzzles to a text file (space-separated rows)
+- 🧩 Solve saved puzzles from file
+- 🐍 Pure Python — **no external dependencies**
 
-## How to Use
+---
 
-1. **Installation**:
-    - Clone or download the repository.
+## 📁 Project Structure
 
-2. **Dependencies**:
-    - The script requires Python 3.x to run.
-    - No external libraries are needed.
+```text
+.
+├─ SudokuGenerate.py   # Generator class (create & save puzzles)
+├─ SudokuSolver.py     # Solver class (load & solve puzzles)
+├─ sudoku_main.py      # Convenience script to generate then optionally solve
+├─ sudoku_grid.txt     # Example output file (generated puzzle)
+└─ README.md
+```
+---
 
-3. **Running the Script**:
-    - Open a terminal or command prompt.
-    - Navigate to the directory containing the script.
-    - Run the script using the command:
-        ```bash
-        python sudoku_generator.py
-        ```
+## 🛠 Requirements
+- Python **3.x** (3.8+ recommended)  
+- No external libraries needed  
 
-4. **Output**:
-    - The script generates a Sudoku grid and prints it to the console.
-    - It also saves the generated grid to a text file named `sudoku_grid.txt` in the same directory.
+---
 
-## Example
+## 🚀 Quick Start
 
-```python
-# Generate a 9x9 Sudoku grid with 40 digits removed
+```bash
+# Generate a puzzle and optionally solve it (guided prompt)
+python sudoku_main.py
+
+# Run Generator directly
+python SudokuGenerate.py
+
+# Run solver directly
+python SudokuSolver.py
+```
+---
+
+## Config
+Configuration is controlled by:
+- `N`: grid size (default 9; must be perfeact such that sqrt(N) is an integer.
+- `K`: number of cells to remove. (40 for a moderate puzzle)
+
+ ```python
 N = 9
 K = 40
-sudoku = SudokuGenerate(N, K)
-sudoku.fillValues()
-sudoku.printSudoku()
-sudoku.saveToFile("sudoku_grid.txt")
 ```
+---
+
+## Notes
+🧪 Notes & Limitations
+
+- The generator assumes N is a perfect square (e.g., 9 where sqrt(9) = 3) to form valid sub-grids.
+- Higher K → fewer givens → generally harder puzzles.
+- Random removal does not guarantee a unique solution (common for simple generators). The solver still finds a valid one if it exists.
+
+---
+
+## Contribution
+Contributions are welcome!
+Open an issue or submit a PR to add features like:
+- Unique-solution enforcement
+- Difficulty grading
+- CLI interface
+- Benchmarking / performance improvements
+
+
